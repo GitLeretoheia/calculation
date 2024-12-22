@@ -62,7 +62,7 @@ curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type:
 ``` 
 Ответ:
 
-`{"error":"You can't divide by zero"}`
+`{"error":"Division by zero"}`
 
 
 
