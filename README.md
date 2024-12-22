@@ -31,20 +31,26 @@ calculatор обрабатывает только круглые скобки "
 ## ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ СО ВСЕМИ ВОЗМОЖНЫМИ СЦЕНАРИЯМИ :
 (веб сервис использует порт 8081)
 1) cURL команда с ответом сервиса 200:
-``` curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3\"}" ```
+```
+curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3\"}"
+```
 Ответ:
 `{"result":"26"}`
 
-2) cURL команда с ответом сервиса 422:
+3) cURL команда с ответом сервиса 422:
 
-``` curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3+a\"}" ```
+``` 
+curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3+a\"}"
+```
 Ответ:
 
 `{"error":"Expression is not valid"}`
 
 3) + cURL команда с ответом сервиса 422 при делении на 0:
 
-``` curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3/0\"}" ``` 
+``` 
+curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3/0\"}"
+``` 
 Ответ:
 
 `{"error":"You can't divide by zero"}`
