@@ -9,6 +9,11 @@ calculatор обрабатывает только круглые скобки "
 3) умножить "*"
 4) разделить "/"
 
+БЫСТРЫЙ ЗАПУСК :
+1) сначала клонируем репозиторий командой : git clone git@github.com:calculation.git
+2) Дальше переходим в папку с проектом : cd calculation
+3) Теперь если у вас установлен GOlang запускаем проект : go run ./cmd/main.go
+
 ОШИБКИ :
 
 1) Если пользователь введет не допустимый символ напрмер букву английского алфавита, то программа выдаст ошибку ("Expression is not valid") и код ошибки 422
@@ -19,3 +24,31 @@ calculatор обрабатывает только круглые скобки "
 
 1) net/http: Базовый HTTP-сервер для обработки запросов
 2) errors:Библиотека для работы с ошибками
+3) fmt: ввод/вывод
+4) strings: Утилиты для работы со строками
+5) os: Работа с операционной системой
+
+ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ СО ВСЕМИ ВОЗМОЖНЫМИ СЦЕНАРИЯМИ :
+(веб сервис использует порт 8081)
+1) cURL команда с ответом сервиса 200:
+
+curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3\"}"
+
+{"result":"26"}
+
+2) cURL команда с ответом сервиса 422:
+
+curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3+a\"}"
+Ответ:
+
+{"error":"Expression is not valid"}
+
+3) + cURL команда с ответом сервиса 422 при делении на 0:
+
+curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3/0\"}"
+Ответ:
+
+{"error":"You can't divide by zero"}
+
+
+
