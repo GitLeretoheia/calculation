@@ -1,26 +1,26 @@
-О ПРОЕКТЕ :
+## О ПРОЕКТЕ :
 Программа на GO (GOlang)
 Пользователь отправляет хэтэтэпэ запрос с арефметическим выражением и получает в ответ результат.
 
-ДОПУСТИМЫЕ СИМВОЛЫ ДЛЯ ВВОДА :
+## ДОПУСТИМЫЕ СИМВОЛЫ ДЛЯ ВВОДА :
 calculatор обрабатывает только круглые скобки "(" ")" и самые простые арефметические операции такие как:
 1) сложить "+"
 2) вычесть "-"
 3) умножить "*"
 4) разделить "/"
 
-БЫСТРЫЙ ЗАПУСК :
-1) сначала клонируем репозиторий командой : git clone git@github.com:calculation.git
+## БЫСТРЫЙ ЗАПУСК :
+1) сначала клонируем репозиторий командой : git clone https://github.com/GitLeretoheia/calculation.git
 2) Дальше переходим в папку с проектом : cd calculation
 3) Теперь если у вас установлен GOlang запускаем проект : go run ./cmd/main.go
 
-ОШИБКИ :
+## ОШИБКИ :
 
 1) Если пользователь введет не допустимый символ напрмер букву английского алфавита, то программа выдаст ошибку ("Expression is not valid") и код ошибки 422
   
 2) Если что-то пойдет не так и программе станет совсем плохо она выдаст ошибку ("Internal server error") и код ошибки 500
 
-ОСНОВНЫЕ БИБЛИОТЕКИ :
+## ОСНОВНЫЕ БИБЛИОТЕКИ :
 
 1) net/http: Базовый HTTP-сервер для обработки запросов
 2) errors:Библиотека для работы с ошибками
@@ -28,27 +28,26 @@ calculatор обрабатывает только круглые скобки "
 4) strings: Утилиты для работы со строками
 5) os: Работа с операционной системой
 
-ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ СО ВСЕМИ ВОЗМОЖНЫМИ СЦЕНАРИЯМИ :
+## ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ СО ВСЕМИ ВОЗМОЖНЫМИ СЦЕНАРИЯМИ :
 (веб сервис использует порт 8081)
 1) cURL команда с ответом сервиса 200:
-
-curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3\"}"
-
-{"result":"26"}
+``` curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3\"}" ```
+Ответ:
+`{"result":"26"}`
 
 2) cURL команда с ответом сервиса 422:
 
-curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3+a\"}"
+``` curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3+a\"}" ```
 Ответ:
 
-{"error":"Expression is not valid"}
+`{"error":"Expression is not valid"}`
 
 3) + cURL команда с ответом сервиса 422 при делении на 0:
 
-curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3/0\"}"
+``` curl --location "http://127.0.0.1:8081/api/v1/calculate" --header "Content-Type: application/json" --data "{\"expression\": \"5+7*3/0\"}" ``` 
 Ответ:
 
-{"error":"You can't divide by zero"}
+`{"error":"You can't divide by zero"}`
 
 
 
